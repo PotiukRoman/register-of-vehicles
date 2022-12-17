@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Index Page</title>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Information about vehicles</a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+        </ul>
+
+        <form sec:authorize="isAuthenticated()" class="form-inline my-2 my-lg-0" th:action="@{/logout}" method="post">
+            <button class="btn btn-outline-success my-2 my-sm-0">Log Out</button>
+        </form>
+        <div sec:authorize="isAnonymous()" class="form-inline my-2 my-lg-0">
+            <a class="btn btn-outline-success my-2 mr-2 my-sm-0" th:href="@{/login}">Логин</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <form method="get" th:action="@{/search}" th:object="${item}">
+        <div class="input-group mb-3 mt-3">
+            <input type="text" th:field="*{VIN}" class="form-control" placeholder="Enter VIN code here" aria-label="Enter VIN code here" aria-describedby="basic-addon2">
+            <div class="input-group-append">
+                <button class="btn btn-outline-primary" type="submit">Search</button>
+            </div>
+        </div>
+    </form>
+
+    <form method="get" th:action="@{/}" th:object="${item}">
+        <div class="input-group mb-3 mt-3">
+            <!--            <input type="text" th:field="*{name}" class="form-control" placeholder="Press Get List" aria-label="Press Get List" aria-describedby="basic-addon2">-->
+            <div class="input-group-append">
+                <button class="btn btn-outline-primary" type="submit">Clean Tables</button>
+            </div>
+        </div>
+    </form>
+
+    <p>This table displays the registration information about the requested car</p>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">RegistrationType</th>
+            <th scope="col">DateReg</th>
+            <th scope="col">Brand</th>
+            <th scope="col">Model</th>
+            <th scope="col">VIN</th>
+            <th scope="col">MakeYear</th>
+            <th scope="col">Color</th>
+            <th scope="col">NewRegNumber</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="item : ${items}">
+            <th scope="row" th:text="${item.OPER_NAME}">1</th>
+            <td th:text="${item.D_REG}">meat</td>
+            <td th:text="${item.BRAND}">meat</td>
+            <td th:text="${item.MODEL}">meat</td>
+            <td th:text="${item.VIN}">meat</td>
+            <td th:text="${item.MAKE_YEAR}">meat</td>
+            <td th:text="${item.COLOR}">meat</td>
+            <td th:text="${item.N_REG_NEW}">apple</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
