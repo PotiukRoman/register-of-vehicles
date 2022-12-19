@@ -6,6 +6,10 @@ import javax.persistence.*;
 @Table(name = "vehicle")
 public class Vehicle {
 
+    @Id
+    @Column(name = "ID")
+    private Integer ID;
+
     @Column(name = "PERSON")
     private String PERSON;
 
@@ -63,11 +67,18 @@ public class Vehicle {
     @Column(name = "TOTAL_WEIGHT")
     private int TOTAL_WEIGHT;
 
-    @Id
-    @Column(name = "N_REG_NEW")
-    private String N_REG_NEW;
+    @Column(name = "NREGNEW")
+    private String NREGNEW;
 
     public Vehicle() {}
+
+    public Integer getID() {
+        return ID;
+    }
+
+    public void setID(Integer ID) {
+        this.ID = ID;
+    }
 
     public String getPERSON() {
         return PERSON;
@@ -221,12 +232,12 @@ public class Vehicle {
         this.TOTAL_WEIGHT = TOTAL_WEIGHT;
     }
 
-    public String getN_REG_NEW() {
-        return N_REG_NEW;
+    public String getNREGNEW() {
+        return NREGNEW;
     }
 
-    public void setN_REG_NEW(String n_REG_NEW) {
-        N_REG_NEW = n_REG_NEW;
+    public void setNREGNEW(String NREGNEW) {
+        this.NREGNEW = NREGNEW;
     }
 }
 

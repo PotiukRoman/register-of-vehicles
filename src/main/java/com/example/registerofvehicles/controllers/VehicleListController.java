@@ -39,7 +39,7 @@ public class VehicleListController {
     public String indexPageAfter2020(Model model, Vehicle item, Principal principal) {
         if (item.getVIN() != StringUtils.EMPTY) {
             logger.info("User name: {}", principal.getName());
-            model.addAttribute("items", repository.findVehicleItemsByVINOrN_REG_NEW(item.getVIN()));
+            model.addAttribute("items", repository.findVehiclesByNREGNEW(item.getVIN()));
         }
         model.addAttribute("item", new Vehicle());
         return "index";

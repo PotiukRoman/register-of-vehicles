@@ -9,6 +9,6 @@ import java.util.List;
 
 @Repository
 public interface VehicleRepository extends JpaRepository<Vehicle, Long> {
-    @Query(value="select * from vdb.vehicle where vin= :vin or n_reg_new= :vin", nativeQuery=true)
-    List<Vehicle> findVehicleItemsByVINOrN_REG_NEW(String vin);
+    @Query(value="select * from vdb.vehicle where nregnew= :vin", nativeQuery=true)
+    List<Vehicle> findVehiclesByNREGNEW(String vin);
 }

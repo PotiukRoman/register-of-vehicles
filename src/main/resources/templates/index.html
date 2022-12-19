@@ -59,6 +59,7 @@
         <tr>
             <th scope="col">RegistrationType</th>
             <th scope="col">DateReg</th>
+            <th scope="col">PlaceReg</th>
             <th scope="col">Brand</th>
             <th scope="col">Model</th>
             <th scope="col">VIN</th>
@@ -70,13 +71,14 @@
         <tbody>
         <tr th:each="item : ${items}">
             <th scope="row" th:text="${item.OPER_NAME}">1</th>
-            <td th:text="${item.D_REG}">meat</td>
-            <td th:text="${item.BRAND}">meat</td>
-            <td th:text="${item.MODEL}">meat</td>
-            <td th:text="${item.VIN}">meat</td>
-            <td th:text="${item.MAKE_YEAR}">meat</td>
-            <td th:text="${item.COLOR}">meat</td>
-            <td th:text="${item.N_REG_NEW}">apple</td>
+            <td th:text="${item.D_REG}">m</td>
+            <td th:text="${item.DEP}">m</td>
+            <td th:text="${item.BRAND}">m</td>
+            <td th:text="${item.MODEL}">m</td>
+            <td th:text="${item.VIN}">m</td>
+            <td th:text="${item.MAKE_YEAR}">m</td>
+            <td th:text="${item.COLOR}">m</td>
+            <td th:text="${item.NREGNEW}">a</td>
         </tr>
         </tbody>
     </table>
